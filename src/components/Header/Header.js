@@ -1,10 +1,12 @@
-import React from 'react'
-import { IndexLink, Link } from 'react-router'
-import './Header.scss'
+import React from 'react';
+import { IndexLink, Link } from 'react-router';
+import './Header.scss';
 
 export const Header = () => (
   <div>
-    <h1>React Redux Starter Kit</h1>
+    <h1>Roomly</h1>
+    <Link to="/login">Log in</Link>
+    <Link to="/signup">Sign up</Link>
     <IndexLink to='/' activeClassName='route--active'>
       Home
     </IndexLink>
@@ -13,6 +15,6 @@ export const Header = () => (
       Counter
     </Link>
   </div>
-)
+);
 
-export default Header
+export default Header;

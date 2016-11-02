@@ -10,9 +10,17 @@ export const createRoutes = (store) => ({
   component: CoreLayout,
   indexRoute: Home
   // childRoutes: [
-  //   CounterRoute(store)
+  //   App(store)
   // ]
 })
+
+// import App from "./components/App.jsx";
+// import Homepage from "./components/Homepage.jsx";
+// import Profile from "./components/Profile.jsx";
+// import NotFound from "./components/NotFound.jsx";
+// import BaseForm from "./components/BaseForm.jsx";
+// import Have from "./components/baseform/Have.jsx";
+// import Looking from "./components/baseform/Looking.jsx";
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:

@@ -3,18 +3,54 @@ import CoreLayout from '../layouts/CoreLayout/CoreLayout';
 import Home from './Home';
 import CounterRoute from './Counter';
 import LoginRoute from './Login';
+import DashboardRoute from './Secure/Dashboard';
+import NotFound from './NotFound';
+import AuthService from '../auth0/utils/AuthService';
+
+const auth = new AuthService('0xwwsj6Zcwrl3g73CaVnNBqimlcYFUev', 'roomly.auth0.com'); // FIXME: move codes in a different file
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
-export const createRoutes = (store) => ({
-  path: '/',
-  component: CoreLayout,
-  indexRoute: Home,
-  childRoutes: [
-    CounterRoute(store)
-  ]
-});
+export const createRoutes = (store) => {
+  const requireAuth = (nextState, replace) => {
+    if (!auth.loggedIn()) {
+      replace({ pathname: '/login' });
+    }
+  };
+
+  const requirePublic = (nextState, replace) => {
+    if (auth.loggedIn()) {
+      replace({ pathname: '/dashboard' });
+    }
+  };
+
+  return ({
+    path        : '/',
+    indexRoute  : Home,
+    component   : CoreLayout,
+    auth        : auth, // pass authentication service
+    childRoutes : [
+      {
+        onEnter    : requireAuth,
+        childRoutes: [
+          DashboardRoute(store)
+        ]
+      },
+      {
+        onEnter     : requirePublic,
+        childRoutes : [
+          LoginRoute(store)
+        ]
+      },
+      {
+        path: '*',
+        indexRoute: NotFound,
+        status: 404
+      }
+    ]
+  });
+};
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:

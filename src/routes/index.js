@@ -1,5 +1,4 @@
 // We only need to import the modules necessary for initial render
-<<<<<<< HEAD
 import CoreLayout from '../layouts/CoreLayout/CoreLayout';
 import Home from './Home';
 import CounterRoute from './Counter';
@@ -8,17 +7,12 @@ import DashboardRoute from './Secure/Dashboard';
 import NotFound from './NotFound';
 import AuthService from '../auth0/utils/AuthService';
 
-const auth = new AuthService('0xwwsj6Zcwrl3g73CaVnNBqimlcYFUev', 'roomly.auth0.com'); // FIXME: move codes in a different file
-=======
-import CoreLayout from '../layouts/CoreLayout/CoreLayout'
-import Home from './Home'
-import App from './App'
->>>>>>> master
+// FIXME: move codes in a different file
+const auth = new AuthService('0xwwsj6Zcwrl3g73CaVnNBqimlcYFUev', 'roomly.auth0.com');
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
-<<<<<<< HEAD
 export const createRoutes = (store) => {
   const requireAuth = (nextState, replace) => {
     if (!auth.loggedIn()) {
@@ -58,16 +52,6 @@ export const createRoutes = (store) => {
     ]
   });
 };
-=======
-export const createRoutes = (store) => ({
-  path: '/',
-  component: CoreLayout,
-  indexRoute: Home,
-  childRoutes: [
-    App
-  ]
-})
->>>>>>> master
 
 // import Profile from "./components/Profile.jsx";
 // import NotFound from "./components/NotFound.jsx";

@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import { isTokenExpired } from './jwtHelper';
 import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
+import { post } from 'axios';
 
 export default class AuthService extends EventEmitter {
   constructor(clientId, domain) {
@@ -19,14 +20,18 @@ export default class AuthService extends EventEmitter {
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken);
-    // navigate to the home route
-    browserHistory.replace('/dashboard'); // FIXME
+    // navigate to the dashboard route
+    browserHistory.replace('/dashboard');
     // Async loads the user profile data
     this.lock.getProfile(authResult.idToken, (error, profile) => {
       if (error) {
         console.log('Error loading the Profile', error);
       } else {
         this.setProfile(profile);
+        // send profile to server
+        post('/api/user', { 'user_id': profile.user_id, profile: profile })
+        .then(console.log.bind(console))
+        .catch(console.log.bind(console));
       }
     });
   }
@@ -75,5 +80,9 @@ export default class AuthService extends EventEmitter {
     localStorage.removeItem('id_token');
     localStorage.removeItem('profile');
     browserHistory.replace('/');
+  }
+
+  getUserId() {
+    return this.getProfile().user_id;
   }
 }

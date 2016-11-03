@@ -1,11 +1,64 @@
 // We only need to import the modules necessary for initial render
+<<<<<<< HEAD
+import CoreLayout from '../layouts/CoreLayout/CoreLayout';
+import Home from './Home';
+import CounterRoute from './Counter';
+import LoginRoute from './Login';
+import DashboardRoute from './Secure/Dashboard';
+import NotFound from './NotFound';
+import AuthService from '../auth0/utils/AuthService';
+
+const auth = new AuthService('0xwwsj6Zcwrl3g73CaVnNBqimlcYFUev', 'roomly.auth0.com'); // FIXME: move codes in a different file
+=======
 import CoreLayout from '../layouts/CoreLayout/CoreLayout'
 import Home from './Home'
 import App from './App'
+>>>>>>> master
 
 /*  Note: Instead of using JSX, we recommend using react-router
     PlainRoute objects to build route definitions.   */
 
+<<<<<<< HEAD
+export const createRoutes = (store) => {
+  const requireAuth = (nextState, replace) => {
+    if (!auth.loggedIn()) {
+      replace({ pathname: '/login' });
+    }
+  };
+
+  const requirePublic = (nextState, replace) => {
+    if (auth.loggedIn()) {
+      replace({ pathname: '/dashboard' });
+    }
+  };
+
+  return ({
+    path        : '/',
+    indexRoute  : Home,
+    component   : CoreLayout,
+    auth        : auth, // pass authentication service
+    childRoutes : [
+      {
+        onEnter    : requireAuth,
+        childRoutes: [
+          DashboardRoute(store)
+        ]
+      },
+      {
+        onEnter     : requirePublic,
+        childRoutes : [
+          LoginRoute(store)
+        ]
+      },
+      {
+        path: '*',
+        indexRoute: NotFound,
+        status: 404
+      }
+    ]
+  });
+};
+=======
 export const createRoutes = (store) => ({
   path: '/',
   component: CoreLayout,
@@ -14,6 +67,7 @@ export const createRoutes = (store) => ({
     App
   ]
 })
+>>>>>>> master
 
 // import Profile from "./components/Profile.jsx";
 // import NotFound from "./components/NotFound.jsx";
@@ -39,4 +93,4 @@ export const createRoutes = (store) => ({
     when the route exists and matches.
 */
 
-export default createRoutes
+export default createRoutes;

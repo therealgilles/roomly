@@ -1,5 +1,4 @@
 const express = require('express')
-const path = require('path')
 const debug = require('debug')('app:server')
 const webpack = require('webpack')
 const webpackConfig = require('../build/webpack.config')
@@ -11,9 +10,7 @@ const paths = config.utils_paths
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.
-// app.use(require('connect-history-api-fallback')())
-
-app.use(express.static(path.join(__dirname, '/../src/')))
+app.use(require('connect-history-api-fallback')())
 
 // ------------------------------------
 // Apply Webpack HMR Middleware

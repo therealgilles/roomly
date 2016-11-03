@@ -1,14 +1,13 @@
 import React from 'react'
-import DuckImage from '../assets/Duck.jpg'
+import CoverPhoto from '../assets/coverphoto.jpg'
 import './HomeView.scss'
 
 export const HomeView = () => (
-  <div>
-    <h4>Welcome!</h4>
-    <img
-      alt='This is a duck, because Redux!'
-      className='duck'
-      src={DuckImage} />
+  <div className='jumbotron'>
+    <div className='container'>
+      <h1>Welcome to Roomy</h1>
+      <img src={CoverPhoto} />
+    </div>
   </div>
 )
 

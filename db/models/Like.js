@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 module.exports = function(sequelize, DataTypes) {
   const Like = sequelize.define('Like', {
     id: { type: DataTypes.BIGINT, primaryKey: true },
@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Like.belongsToMany(models.User, {through: 'UserLikes'});
+        Like.belongsToMany(models.User, { through: 'UserLikes' });
       }
     }
   });

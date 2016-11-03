@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 module.exports = function(sequelize, DataTypes) {
   const Pic = sequelize.define('Pic', {
     id: { type: DataTypes.BIGINT, primaryKey: true },

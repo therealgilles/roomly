@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 module.exports = function(sequelize, DataTypes) {
   const Friend = sequelize.define('Friend', {
     id: { type: DataTypes.BIGINT, primaryKey: true },
@@ -6,9 +6,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Friend.belongsToMany(models.User, {through: 'UserFriends'});
+        Friend.belongsToMany(models.User, { through: 'UserFriends' });
       }
     }
   });
   return Friend;
-}
+};

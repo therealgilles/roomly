@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 module.exports = function(sequelize, DataTypes) {
   const House = sequelize.define('House', {
     id: { type: DataTypes.BIGINT, primaryKey: true },
@@ -21,4 +21,4 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   return House;
-}
+};

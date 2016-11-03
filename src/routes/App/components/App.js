@@ -1,7 +1,7 @@
-import React from 'react'
-import SearchListEntry from './SearchListEntry.jsx'
-import request from 'browser-request'
-import './App.scss'
+import React from 'react';
+import SearchListEntry from './SearchListEntry.jsx';
+import request from 'browser-request';
+import './App.scss';
 
 class App extends React.Component {
   // constructor (props) {
@@ -10,13 +10,13 @@ class App extends React.Component {
 
   getResults () {
     request('/api/getResults', function (err, res, body) {
-      if (err) { console.log(err) }
-      console.log(body)
-    })
+      if (err) { console.log(err); }
+      console.log(body);
+    });
   }
 
   render () {
-    this.getResults()
+    this.getResults();
     return (
       <div>
         <div className='sort-container'>
@@ -58,8 +58,8 @@ class App extends React.Component {
         </div>
         <SearchListEntry />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

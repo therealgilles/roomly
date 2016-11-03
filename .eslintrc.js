@@ -1,29 +1,21 @@
-{
-  "parser": "babel-eslint",
-  "extends": [
-    "standard",
-    "standard-react"
-  ],
-  "parser-options": {
-    "ecmaFeatures": {
-    "jsx": true
-    }
+/**
+ * These rules enforce Hack Reactor's style guide.
+ * Visit this repo for more information:
+ *   https://github.com/reactorcore/eslint-config-hackreactor
+ */
+
+module.exports = {
+  env: {
+    'es6': true
   },
-  "plugins": [
-    "babel",
-    "react",
-    "promise"
-  ],
-  "env": {
-    "browser" : true
+  parserOptions: {
+    ecmaFeatures: {
+      'jsx': true
+    },
+    ecmaVersion: 6,
+    sourceType: "module"
   },
-  "globals": {
-    "__DEV__"      : false,
-    "__TEST__"     : false,
-    "__PROD__"     : false,
-    "__COVERAGE__" : false
-  },
-  "rules": {
+  rules: {
     /* Indentation */
     'no-mixed-spaces-and-tabs': 2,
     'indent': [2, 2],
@@ -55,7 +47,4 @@
     'max-len': [2, 120, 2],
     'object-curly-spacing': [2, 'always']
   }
-}
-
-
-  
+};

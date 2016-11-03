@@ -1,6 +1,8 @@
-import React from 'react'
-import CoverPhoto from '../assets/coverphoto.jpg'
-import './HomeView.scss'
+'use strict';
+
+import React from 'react';
+import CoverPhoto from '../assets/coverphoto.jpg';
+import './HomeView.scss';
 
 export const HomeView = () => (
   <div className='jumbotron'>
@@ -9,6 +11,6 @@ export const HomeView = () => (
       <img src={CoverPhoto} />
     </div>
   </div>
-)
+);
 
-export default HomeView
+export default HomeView;

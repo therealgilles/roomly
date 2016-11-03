@@ -9,8 +9,7 @@ const config = require('../config');
 const app = express();
 const paths = config.utils_paths;
 
-// load authentication
-//const auth = require('./auth0/auth.js')(app);
+// FIXME? if access_token is missing for routes other than '/', redirect to '/'
 
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal

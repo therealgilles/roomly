@@ -2,6 +2,7 @@ import { EventEmitter } from 'events';
 import { isTokenExpired } from './jwtHelper';
 import Auth0Lock from 'auth0-lock';
 import { browserHistory } from 'react-router';
+import { post } from 'axios';
 
 export default class AuthService extends EventEmitter {
   constructor(clientId, domain) {
@@ -27,6 +28,10 @@ export default class AuthService extends EventEmitter {
         console.log('Error loading the Profile', error);
       } else {
         this.setProfile(profile);
+        // send profile to server
+        post('/api/user', profile)
+        .then(console.log.bind(console))
+        .catch(console.log.bind(console));
       }
     });
   }

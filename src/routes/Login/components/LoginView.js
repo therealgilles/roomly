@@ -1,10 +1,10 @@
 import React, { PropTypes as T } from 'react';
 import { Link } from 'react-router';
-import AuthService from '../../../auth0/utils/AuthService';
 import RaisedButton from 'material-ui/RaisedButton';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
 import './LoginView.scss';
+import { auth } from '../../../auth0/auth';
 
 class LoginView extends React.Component {
   static contextTypes = {
@@ -24,7 +24,6 @@ class LoginView extends React.Component {
   }
 
   render() {
-    const { auth } = this.props.routes[0];
     const style = { margin: 12 };
 
     return (

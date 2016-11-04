@@ -1,10 +1,9 @@
 import React, { PropTypes as T } from 'react';
-import { Link } from 'react-router';
-import AuthService from '../../../../auth0/utils/AuthService';
 import RaisedButton from 'material-ui/RaisedButton';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
 import './DashboardView.scss';
+import { auth } from '../../../../auth0/auth';
 
 class DashboardView extends React.Component {
   static contextTypes = {
@@ -13,7 +12,9 @@ class DashboardView extends React.Component {
 
   static propTypes = {
     location: T.object,
-    auth: T.instanceOf(AuthService)
+    isFetching: T.bool,
+    searchResults: T.array,
+    updateSearchCriteria: T.func
   }
 
   constructor(props) {
@@ -21,8 +22,10 @@ class DashboardView extends React.Component {
   }
 
   render() {
-    const { auth } = this.props.routes[0];
+    const { searchResults, isFetching, searchCriteria, updateSearchCriteria } = this.props;
     const style = { margin: 12 };
+
+    console.log('IN DashboardView: searchResults =', searchResults);
 
     return (
       <div className="">
@@ -34,6 +37,18 @@ class DashboardView extends React.Component {
           className="muidocs-icon-action-home"
           onClick={auth.logout.bind(this)}
         />
+        <RaisedButton
+          label="Update search criteria"
+          primary={true}
+          style={style}
+          className="muidocs-icon-action-home"
+          onClick={ () => updateSearchCriteria({ dog: true, cat: false }) }
+        />
+      <ul className='search-results'>
+        {searchResults.map((result, index) => {
+          return <li key={index}>{result.user}</li>
+        })}
+      </ul>
       </div>
     );
   }

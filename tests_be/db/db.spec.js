@@ -1,25 +1,26 @@
 var expect = require('chai').expect;
 var Promise = require('bluebird');
 var mysql = require('promise-mysql');
-// var Friend = require('../../db/models').User;
-// var House = require('../../db/models').User;
-// var Like = require('../../db/models').User;
-// var Pic = require('../../db/models').User;
-// var Want = require('../../db/models').User;
+var addUser = require('../../db/models/Users.js').addUser;
+var addFriend = require('../../db/models/Friends.js').addFriend;
+var addHouse = require('../../db/models/Houses.js').addHouse;
+var addLike = require('../../db/models/Likes.js').addLikes;
+var addPic = require('../../db/models/Pics.js').addPics;
+var addWant = require('../../db/models/Wants.js').addWants;
 
+// Dummy data
+var Fred = {
+  userName: 'Fred',
+  profPic: 'test',
+  city: 'Toronto',
+  state: 'CA',
+  age: 34,
+  landLord: true,
+  description: 'Fred wears black'
+};
 
 describe('Database Schema',function() {
   var db;
-  
-  var Fred = {
-    userName: 'Fred',
-    profPic: 'test',
-    city: 'Toronto',
-    state: 'CA',
-    age: 34,
-    landLord: true,
-    description: 'Fred wears black'
-  };
   
   var fredHouse = {
     title: 'Test house',
@@ -196,4 +197,15 @@ describe('Database Schema',function() {
           });
       });
   });
+});
+
+describe('Database Models', function() {
+  it('Should use the model to add a User', function(done) {
+
+  });
+  it('Should use the model to add a House');
+  it('Should use the model to add a Want');
+  it('Should use the model to add a Pic');
+  it('Should use the model to add a Friend');
+  it('Should use the model to add a Like');
 });

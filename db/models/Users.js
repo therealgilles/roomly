@@ -1,9 +1,10 @@
 'use strict';
 
-const db = require('../index.js');
+const dataBase = require('../index.js');
 
 const addUser = function(user) {
-  return db.query('SELECT id FROM Users WHERE id = ?', user.id)
+  const db = dataBase.connection;
+  return db.query('SELECT * FROM Users WHERE id = ?', user.id)
     .then(function(rows) {
       if (rows.length === 0) {
         return db.query('INSERT INTO Users SET ?', user);

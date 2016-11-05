@@ -13,5 +13,5 @@ mysql.createConnection({
   password: ''
 }).then(function(conn) {
   connection = conn;
-  module.exports = connection;
+  module.exports.connection = connection;
 });

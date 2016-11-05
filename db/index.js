@@ -4,6 +4,8 @@ const mysql = require('promise-mysql');
 
 const host = '127.0.0.1';
 
+let connection;
+
 mysql.createConnection({
   host: host,
   user: 'root',

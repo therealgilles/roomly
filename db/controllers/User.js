@@ -1,3 +1,4 @@
-const User = require('../models/User');
+'use strict';
+const User = require('../models/index.js').User;
 
 

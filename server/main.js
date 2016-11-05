@@ -9,7 +9,11 @@ const config = require('../config');
 const app = express();
 const paths = config.utils_paths;
 
-// FIXME? if access_token is missing for routes other than '/', redirect to '/'
+// handle user routes
+const user = require('./user/user')(app);
+// handle search routes
+const search = require('./search/search')(app);
+
 // This rewrites all routes requests to the root /index.html file
 // (ignoring file requests). If you want to implement universal
 // rendering, you'll want to remove this middleware.

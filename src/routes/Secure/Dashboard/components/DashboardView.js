@@ -1,23 +1,28 @@
+// required for a functioning page
 import React, { PropTypes as T } from 'react';
 import { Link } from 'react-router';
 import { auth } from '../../../../auth0/auth';
 
+// styling ======================================
+// buttons
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
+// styling
 import Dialog from 'material-ui/Dialog';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Divider from 'material-ui/Divider';
+import './DashboardView.scss';
 
+// assets
 import Avatar from 'material-ui/Avatar';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import Divider from 'material-ui/Divider';
 import { green500, grey400, darkBlack, lightBlack } from 'material-ui/styles/colors';
-import './DashboardView.scss';
 
 // placeholder imports
 import Avatar1 from '../assets/ok-128.jpg';
@@ -29,6 +34,7 @@ import Room1 from '../assets/room1.jpg';
 import Room2 from '../assets/room2.jpg';
 import Room3 from '../assets/room3.jpg';
 
+// menu and button customization
 const iconButtonElement = (
   <IconButton
     touch={true}
@@ -47,6 +53,7 @@ const rightIconMenu = (
   </IconMenu>
 );
 
+// mui style overrides
 const styles = {
   radioButton: {
     marginTop: 16,
@@ -59,6 +66,7 @@ const styles = {
   }
 };
 
+// react component
 class DashboardView extends React.Component {
   static contextTypes = {
     router: T.object
@@ -73,6 +81,9 @@ class DashboardView extends React.Component {
 
   constructor(props) {
     super(props);
+    this.data = [
+      { name: 'dude' }, { name: 'dudette' }, { name: 'duder' }
+    ];
   }
 
   state = {
@@ -105,10 +116,46 @@ class DashboardView extends React.Component {
       />,
     ];
 
-    console.log('IN DashboardView: searchResults =', searchResults);
     return (
       <div className='dashboard'>
        <List>
+           <ListItem
+            leftAvatar={
+              <span>
+                <Avatar src={ Avatar1 } />
+                <Avatar src={ Avatar2 } size={20}/>
+                <Avatar src={ Avatar3 } size={20}/>
+              </span>
+            }
+            primaryText='$1700 - Available December 1, 2016 - Yearly'
+            secondaryText={
+              <p>
+              This is a great room in an amazing house, looking for guys only.
+              </p>
+            }
+            secondaryTextLines={2}
+            rightAvatar={
+              <span>
+                <Avatar src={ Avatar1 } size={15} />
+                <Avatar src={ Avatar1 } size={15} />
+                <Avatar src={ Avatar1 } size={15} />
+              </span>
+            }
+            onTouchTap={this.handleOpen}
+          />
+          <Dialog
+            title='$1700 - San Francisco'
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+            autoScrollBodyContent={true}
+          >
+            <img src={ Room1 } className='roomView'/>
+            Wow what an amazing room??
+          </Dialog>
+          <Divider inset={true} />
+          
           <ListItem
             leftAvatar={
               <span>

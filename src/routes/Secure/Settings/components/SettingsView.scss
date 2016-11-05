@@ -65,3 +65,38 @@ a:hover {
   padding: 0 16px;
   color: green;
 }
+
+.survey-div {
+  width: 70%;
+  padding: auto;
+  padding-top: 50px;
+  margin: auto;
+}
+
+.sort-container {
+  float: 'left';
+  width: '25%';
+  margin: '5px 5px';
+  height: '100%';
+};
+
+.search-container {
+  width: '70%';
+  float: 'right';
+  margin: '5px 5px';
+  height: '100%';
+};
+
+.image-container {
+  height: 'auto';
+  width: 'auto';
+  border: '0';
+};
+
+.indentRight {
+  padding: 16px;
+}
+
+.alignRight {
+  text-align: right;
+}

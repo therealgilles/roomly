@@ -35,7 +35,7 @@ class Nav extends React.Component {
         <ul>
           <li className='topLogo'><Link to='/'><img src={ Logo } class='pull-left' alt='Homepage' /></Link></li>
           <li className='topItem'><Link to='/dashboard'>Dashboard</Link></li>
-          <li className='topItem'><Link to='/survey'>Survey</Link></li>
+          <li className='topItem'><Link to='/settings'>Settings</Link></li>
           <li className='topItem'><Link to={this.getPath}>Profile</Link></li>
           <li className='topItem'><a href='/auth/logout'>Logout</a></li>
           <li className='floatRight'>

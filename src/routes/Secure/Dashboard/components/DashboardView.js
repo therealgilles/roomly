@@ -196,11 +196,6 @@ class DashboardView extends React.Component {
           className='muidocs-icon-action-home'
           onClick={ () => updateSearchCriteria({ dog: true, cat: false }) }
         />
-        <ul className='search-results'>
-          {searchResults.map((result, index) => {
-            return (<li key={index}>{result.user}</li>);
-          })}
-        </ul>
         <RaisedButton
            label='Logout'
            style={ styles.logoutButton }
@@ -213,3 +208,9 @@ class DashboardView extends React.Component {
 }
 
 export default DashboardView;
+
+        // <ul className='search-results'>
+        //   {searchResults.map((result, index) => {
+        //     return (<li key={index}>{result.user}</li>);
+        //   })}
+        // </ul>

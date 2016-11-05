@@ -1,14 +1,11 @@
-// We only need to import the modules necessary for initial render
 import CoreLayout from '../layouts/CoreLayout/CoreLayout';
 import Home from './Home';
 import LoginRoute from './Login';
 import DashboardRoute from './Secure/Dashboard';
+import SurveyRoute from './Survey';
 import NotFound from './NotFound';
 import { auth } from '../auth0/auth';
 import CounterRoute from './Counter';
-
-/*  Note: Instead of using JSX, we recommend using react-router
-    PlainRoute objects to build route definitions.   */
 
 export const createRoutes = (store) => {
   const requireAuth = (nextState, replace) => {
@@ -31,7 +28,8 @@ export const createRoutes = (store) => {
       {
         onEnter    : requireAuth,
         childRoutes: [
-          DashboardRoute(store)
+          DashboardRoute(store),
+          SurveyRoute(store)
         ]
       },
       {
@@ -48,12 +46,6 @@ export const createRoutes = (store) => {
     ]
   });
 };
-
-// import Profile from "./components/Profile.jsx";
-// import NotFound from "./components/NotFound.jsx";
-// import BaseForm from "./components/BaseForm.jsx";
-// import Have from "./components/baseform/Have.jsx";
-// import Looking from "./components/baseform/Looking.jsx";
 
 /*  Note: childRoutes can be chunked or otherwise loaded programmatically
     using getChildRoutes with the following signature:

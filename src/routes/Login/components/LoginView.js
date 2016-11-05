@@ -27,14 +27,14 @@ class LoginView extends React.Component {
     const style = { margin: 12 };
 
     return (
-      <div className="">
+      <div className=''>
         <h2>Login to your facebook account</h2>
         <RaisedButton
-          label="FB Login"
+          label='FB Login'
           primary={true}
           style={style}
-          className="muidocs-icon-action-home"
-          icon={<FontIcon className="facebook-box"/>}
+          className='muidocs-icon-action-home'
+          icon={<FontIcon className='facebook-box'/>}
           onClick={auth.login.bind(this)}
         />
       </div>

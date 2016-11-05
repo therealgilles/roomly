@@ -2,7 +2,7 @@ import CoreLayout from '../layouts/CoreLayout/CoreLayout';
 import Home from './Home';
 import LoginRoute from './Login';
 import DashboardRoute from './Secure/Dashboard';
-import SurveyRoute from './Survey';
+import SettingsRoute from './Secure/Settings';
 import NotFound from './NotFound';
 import { auth } from '../auth0/auth';
 import CounterRoute from './Counter';
@@ -29,7 +29,7 @@ export const createRoutes = (store) => {
         onEnter    : requireAuth,
         childRoutes: [
           DashboardRoute(store),
-          SurveyRoute(store)
+          SettingsRoute(store)
         ]
       },
       {

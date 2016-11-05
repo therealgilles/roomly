@@ -16,7 +16,7 @@ const IconStyle = {
 
 const FacebookIcon = (props) => (
   <SvgIcon style={IconStyle} viewBox='0 0 24 24'>
-      <path 
+      <path
         transform='translate(0,2)'
         fill='#FFFFFF'
         d='M17,2V2H17V6H15C14.31,6 14,6.81 14,7.5V10H14L17,10V14H14V22H10V14H7V10H10V6A4,4 0 0,1 14,2H17Z'
@@ -42,11 +42,16 @@ class HomeView extends React.Component {
   }
 
   render() {
+    // do not display anything if we are getting the access token back
+    if (this.props.location.hash.match(/^#access_token/)) {
+      return ( <div></div> );
+    }
+
     const style = { margin: 12 };
 
     return (
       <div className='jumbotron'>
-        <div className='container'>
+        <div className='container landing'>
           <img className='logo' alt='roomly' src={ LogoImage }/>
           <span className='sublogo'>Find your new roommate today!</span>
           <br/>

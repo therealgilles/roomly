@@ -1,8 +1,9 @@
 'use strict';
 
-const db = require('../index.js');
+const dataBase = require('../index.js');
 
 const addHouse = function(house, userId) {
+  const db = dataBase.connection;
   return db.query('SELECT id FROM Users WHERE id = ?', userId)
     .then(function(rows) {
       if (rows.length === 0) {

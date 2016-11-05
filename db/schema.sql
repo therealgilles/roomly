@@ -1,5 +1,3 @@
-CREATE DATABASE roomly;
-
 USE roomly;
 
 -- ---
@@ -10,14 +8,14 @@ USE roomly;
 -- SET FOREIGN_KEY_CHECKS=0;
 
 -- ---
--- Table 'Users'
+-- Table 'User'
 --
 -- ---
 
 DROP TABLE IF EXISTS `Users`;
 
 CREATE TABLE `Users` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `id` INTEGER NOT NULL,
   `userName` VARCHAR(20) NULL DEFAULT NULL,
   `profPic` VARCHAR(255) NULL DEFAULT NULL,
   `city` VARCHAR(25) NULL DEFAULT NULL,
@@ -25,11 +23,12 @@ CREATE TABLE `Users` (
   `age` INTEGER(1) NULL DEFAULT NULL,
   `landLord` BINARY NULL DEFAULT NULL,
   `description` VARCHAR(255) NULL DEFAULT NULL,
+  `gender` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
 -- ---
--- Table 'Houses'
+-- Table 'House'
 --
 -- ---
 
@@ -49,11 +48,12 @@ CREATE TABLE `Houses` (
   `smoking` BINARY NULL DEFAULT NULL,
   `pets` BINARY NULL DEFAULT NULL,
   `userId` INTEGER NULL DEFAULT NULL,
+  `genderPref` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
 -- ---
--- Table 'Wants'
+-- Table 'Want'
 --
 -- ---
 
@@ -81,7 +81,7 @@ DROP TABLE IF EXISTS `Friends`;
 CREATE TABLE `Friends` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
   `userId` INTEGER NULL DEFAULT NULL,
-  `friendName` VARCHAR(20) NULL DEFAULT NULL,
+  `friendName` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -117,19 +117,19 @@ CREATE TABLE `Pics` (
 -- Foreign Keys
 -- ---
 
-ALTER TABLE `Houses` ADD FOREIGN KEY (userId) REFERENCES `Users` (`id`);
-ALTER TABLE `Wants` ADD FOREIGN KEY (userId) REFERENCES `Users` (`id`);
-ALTER TABLE `Friends` ADD FOREIGN KEY (userId) REFERENCES `Users` (`id`);
-ALTER TABLE `Likes` ADD FOREIGN KEY (userId) REFERENCES `Users` (`id`);
-ALTER TABLE `Pics` ADD FOREIGN KEY (houseId) REFERENCES `Houses` (`id`);
+ALTER TABLE `House` ADD FOREIGN KEY (userId) REFERENCES `User` (`id`);
+ALTER TABLE `Want` ADD FOREIGN KEY (userId) REFERENCES `User` (`id`);
+ALTER TABLE `Friends` ADD FOREIGN KEY (userId) REFERENCES `User` (`id`);
+ALTER TABLE `Likes` ADD FOREIGN KEY (userId) REFERENCES `User` (`id`);
+ALTER TABLE `Pics` ADD FOREIGN KEY (houseId) REFERENCES `House` (`id`);
 
 -- ---
 -- Table Properties
 -- ---
 
--- ALTER TABLE `Users` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Houses` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
--- ALTER TABLE `Wants` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `User` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `House` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+-- ALTER TABLE `Want` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Friends` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Likes` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 -- ALTER TABLE `Pics` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -138,11 +138,11 @@ ALTER TABLE `Pics` ADD FOREIGN KEY (houseId) REFERENCES `Houses` (`id`);
 -- Test Data
 -- ---
 
--- INSERT INTO `Users` (`id`,`userName`,`profPic`,`city`,`state`,`age`,`landLord`,`description`) VALUES
--- ('','','','','','','','');
--- INSERT INTO `Houses` (`id`,`title`,`addressOne`,`addressTwo`,`city`,`state`,`description`,`price`,`openRooms`,`capacity`,`smoking`,`pets`,`userId`) VALUES
--- ('','','','','','','','','','','','','');
--- INSERT INTO `Wants` (`id`,`city`,`state`,`smoking`,`pets`,`minPrice`,`maxPrice`,`userId`) VALUES
+-- INSERT INTO `User` (`id`,`userName`,`profPic`,`city`,`state`,`age`,`landLord`,`description`,`gender`) VALUES
+-- ('','','','','','','','','');
+-- INSERT INTO `House` (`id`,`title`,`addressOne`,`addressTwo`,`city`,`state`,`description`,`price`,`openRooms`,`capacity`,`smoking`,`pets`,`userId`,`genderPref`) VALUES
+-- ('','','','','','','','','','','','','','');
+-- INSERT INTO `Want` (`id`,`city`,`state`,`smoking`,`pets`,`minPrice`,`maxPrice`,`userId`) VALUES
 -- ('','','','','','','','');
 -- INSERT INTO `Friends` (`id`,`userId`,`friendName`) VALUES
 -- ('','','');
